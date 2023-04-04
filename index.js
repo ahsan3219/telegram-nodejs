@@ -7,6 +7,14 @@
 const dotenv = require('dotenv').config();
 
 const telegramAPI = require('node-telegram-bot-api');
+const express = require('express')
+const app = express()
+
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
+PORT=process.env.PORT||3000
+app.listen(3000)
 
 const token = process.env.KEY_BOT;
 
