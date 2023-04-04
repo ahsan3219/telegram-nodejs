@@ -43,7 +43,7 @@ const openai = new OpenAIApi(configuration);
 const myText = "" +
     "Who are yu" ;
 
-(async () => {
+async function abc() {
     try {
         // Catching a message from the chat
         bot.on('message', async msg => {
@@ -179,8 +179,27 @@ const myText = "" +
             console.log(error.message);
         }
     }
-}) ();
+} ;
+// abc()
 
+
+
+
+// Start the server
+if (process.env.NODE_ENV === "production") {
+    // Use Webhooks for the production server
+    const app = express();
+    app.use(express.json());
+    app.use(webhookCallback(abc, "express"));
+  
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+      console.log(`Bot listening on port ${PORT}`);
+    });
+  } else {
+    // Use Long Polling for development
+    abc();
+  }
 
 
 
