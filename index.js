@@ -1,25 +1,22 @@
-//  This code is a chatbot that uses the OpenAI API to generate responses.
-// When receiving a '/start' message, the bot activates and sends a message with this text,
-// and then when other messages are received, it uses the OpenAI API to generate a response.
-
 const dotenv = require('dotenv').config();
 
 const telegramAPI = require('node-telegram-bot-api');
 
-const token = "6184315031:AAHn42PVSCdDchg1dF8IZi8yhn1HR6is4qQ";
+const token = process.env.KEY_BOT;
 
 const bot = new telegramAPI(token,{polling: true});
 
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: process.env.OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
 
 const myText = "" +
 "Who are yu" ;
+
 
 (async () => {
     try {
@@ -81,72 +78,23 @@ const myText = "" +
 
 
             }
-//             else if (""){
-
-//                 const api_url = 
-//                 `https://sheetdb.io/api/v1/keqbu2v4inoqz/ `;
-//                 an= async function getapi(url) {
-              
-//              let response = await fetch(url);
-              
-//               var data = await response.json();
-// //  console.log("data",data);
-//             //   texts(data)
-//             let datas=JSON.stringify(data);
-//         //   text(datas)
-//     return datas    
-//     }
-//   abc=getapi(api_url)
-// abc()
-//   console.log();    
-//   await bot.sendMessage(chatId, abc()       )     }
-//             else if ( text.split(' ')[0]="start" ){
-//                 // Pass model settings to OpenAI
-
-//    const api_url = 
-//                         `https://sheetdb.io/api/v1/keqbu2v4inoqz/ `;
-                    
-//                   async function getapi(url) {
-                      
-//                      let response = await fetch(url);
-                      
-//                       var data = await response.json();
-//          console.log("data",data);
-//                     }
-//           getapi(api_url)
-
-//                 const completion = await openai.createCompletion({
-//                     model: 'text-davinci-003',
-//                     prompt: text,
-//                     temperature: 0.2,
-//                     max_tokens: 180,
-//                     top_p: 1.0,
-//                     frequency_penalty: 0.2,
-//                     presence_penalty: 0.2,
-//                     stop: ["\n+"],
-//                 })
-//                 // send the generated response to the chat
-//                 await bot.sendMessage(chatId, completion.data.choices[0].text);
-//                 console.log(completion.data);
-//         }
-            
-            
-    //         else if ( myMessage = text ){
-    //         // Pass model settings to OpenAI
-    //         const completion = await openai.createCompletion({
-    //             model: 'text-davinci-003',
-    //             prompt: text,
-    //             temperature: 0.2,
-    //             max_tokens: 180,
-    //             top_p: 1.0,
-    //             frequency_penalty: 0.2,
-    //             presence_penalty: 0.2,
-    //             stop: ["\n+"],
-    //         })
-    //         // send the generated response to the chat
-    //         await bot.sendMessage(chatId, completion.data.choices[0].text);
-    //         console.log(completion.data);
-    // }
+//            
+            else if ( myMessage = text ){
+            // Pass model settings to OpenAI
+            const completion = await openai.createCompletion({
+                model: 'text-davinci-003',
+                prompt: text,
+                temperature: 0.2,
+                max_tokens: 180,
+                top_p: 1.0,
+                frequency_penalty: 0.2,
+                presence_penalty: 0.2,
+                stop: ["\n+"],
+            })
+            // send the generated response to the chat
+            await bot.sendMessage(chatId, completion.data.choices[0].text);
+            console.log(completion.data);
+    }
 
 })
     // If there are errors, print them to the console
