@@ -26,13 +26,13 @@ const myText = "" +
             const chatId = msg.chat.id;
             console.log(msg.text);
             // // Process the "/start" command and send brief information to the chat
-            if (text === 'Hi'||text === 'Hi there'||text === 'hey'||text === 'hi'||text === 'hello') {
+            if (text === '/start') {
                 myMessage = myText;
-                await bot.sendMessage(chatId, `Hi Alfredo Mensi. I am your GoogleSheet Assistant.How can I help You.`)
+                await bot.sendMessage(chatId, `Hi Alfredo Mensi. I am your GoogleSheet Assistant.How can I help You.Start every message with keyword "Start".For example:Assistant tell me who is adam?`)
             } 
 
 
-            else    {
+            else  if (text.slice(0, 5)==="start"||text.slice(0, 5)==="Start" )  {
               console.log("text",typeof(text));
 
                 const api_url = 
@@ -56,8 +56,8 @@ const myText = "" +
             const completion = await openai.createCompletion({
                 model: 'text-davinci-003',
                 prompt: myMessage,
-                temperature: 0.7,
-                max_tokens: 3000,
+                temperature: 0.2,
+                max_tokens: 200,
                 top_p: 1.0,
                 frequency_penalty: 0.2,
                 presence_penalty: 0.2,
@@ -78,23 +78,23 @@ const myText = "" +
 
 
             }
-// //            
-//             else if ( myMessage = text ){
-//             // Pass model settings to OpenAI
-//             const completion = await openai.createCompletion({
-//                 model: 'text-davinci-003',
-//                 prompt: text,
-//                 temperature: 0.2,
-//                 max_tokens: 180,
-//                 top_p: 1.0,
-//                 frequency_penalty: 0.2,
-//                 presence_penalty: 0.2,
-//                 stop: ["\n+"],
-//             })
-//             // send the generated response to the chat
-//             await bot.sendMessage(chatId, completion.data.choices[0].text);
-//             console.log(completion.data);
-//     }
+//            
+    //         else if ( myMessage = text ){
+    //         // Pass model settings to OpenAI
+    //         const completion = await openai.createCompletion({
+    //             model: 'text-davinci-003',
+    //             prompt: text,
+    //             temperature: 0.2,
+    //             max_tokens: 180,
+    //             top_p: 1.0,
+    //             frequency_penalty: 0.2,
+    //             presence_penalty: 0.2,
+    //             stop: ["\n+"],
+    //         })
+    //         // send the generated response to the chat
+    //         await bot.sendMessage(chatId, completion.data.choices[0].text);
+    //         console.log(completion.data);
+    // }
 
 })
     // If there are errors, print them to the console
