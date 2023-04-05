@@ -26,13 +26,13 @@ const myText = "" +
             const chatId = msg.chat.id;
             console.log(msg.text);
             // // Process the "/start" command and send brief information to the chat
-            if (text === '/start') {
+            if (text === 'Hi'||text === 'hi'||text === 'Hey'||text === 'Hello') {
                 myMessage = myText;
                 await bot.sendMessage(chatId, `Hi Alfredo Mensi. I am your GoogleSheet Assistant.How can I help You.Start every message with keyword "Start".For example:Assistant tell me who is adam?`)
             } 
 
 
-            else  if (text.slice(0, 5)==="start"||text.slice(0, 5)==="Start" )  {
+            else {
               console.log("text",typeof(text));
 
                 const api_url = 
