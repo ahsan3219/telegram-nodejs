@@ -56,8 +56,8 @@ const myText = "" +
             const completion = await openai.createCompletion({
                 model: 'text-davinci-003',
                 prompt: myMessage,
-                temperature: 0.2,
-                max_tokens: 200,
+                temperature: 0.7,
+                max_tokens: 1500,
                 top_p: 1.0,
                 frequency_penalty: 0.2,
                 presence_penalty: 0.2,
