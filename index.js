@@ -32,8 +32,23 @@ const myText = "" +
             } 
 
 
+            else if (text==="Give List"||text==="LIST"||text==="give list"||text==="Give list"||text==="list"|| text==="List"){
+                const api_url = 
+                        `https://sheetdb.io/api/v1/keqbu2v4inoqz/ `;
+                    
+                  async function getapi(url) {
+                      
+                     let response = await fetch(url);
+                      
+                      var data = await response.json();
+         console.log("data",data);
+                      await bot.sendMessage(chatId,data);
+                    }
+          
+            }
+
             else {
-              console.log("text",typeof(text));
+            //   console.log("text",typeof(text));
 
                 const api_url = 
                         `https://sheetdb.io/api/v1/keqbu2v4inoqz/ `;
