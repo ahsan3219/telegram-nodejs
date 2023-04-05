@@ -1,5 +1,5 @@
 const dotenv = require('dotenv').config();
-
+const fetch = require("node-fetch");
 const telegramAPI = require('node-telegram-bot-api');
 
 const token = process.env.KEY_BOT;
