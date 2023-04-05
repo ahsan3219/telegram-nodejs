@@ -13,7 +13,7 @@ const bot = new telegramAPI(token,{polling: true});
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
@@ -56,18 +56,18 @@ const myText = "" +
                         myMessage = anc+text;
             console.log("Mymessage ", myMessage);           
             // let result = await textGeneration(anc);
-            // const completion = await openai.createCompletion({
-            //     model: 'text-davinci-003',
-            //     prompt: myMessage,
-            //     temperature: 0.2,
-            //     max_tokens: 200,
-            //     top_p: 1.0,
-            //     frequency_penalty: 0.2,
-            //     presence_penalty: 0.2,
-            //     stop: ["\n+"],
-            // })
-            // await bot.sendMessage(chatId, completion.data.choices[0].text);
-            await bot.sendMessage(chatId,myMessage);
+            const completion = await openai.createCompletion({
+                model: 'text-davinci-003',
+                prompt: myMessage,
+                temperature: 0.2,
+                max_tokens: 200,
+                top_p: 1.0,
+                frequency_penalty: 0.2,
+                presence_penalty: 0.2,
+                stop: ["\n+"],
+            })
+            await bot.sendMessage(chatId, completion.data.choices[0].text);
+            await bot.sendMessage(chatId,data);
             
             // console.log("result: ", result);          
                 }            
