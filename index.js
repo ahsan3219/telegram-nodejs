@@ -1,5 +1,3 @@
-
-
 //  This code is a chatbot that uses the OpenAI API to generate responses.
 // When receiving a '/start' message, the bot activates and sends a message with this text,
 // and then when other messages are received, it uses the OpenAI API to generate a response.
@@ -7,43 +5,23 @@
 const dotenv = require('dotenv').config();
 
 const telegramAPI = require('node-telegram-bot-api');
-const express = require('express')
-const app = express()
 
-app.get('/', function (req, res) {
-  res.send('Hello World')
-})
-PORT=process.env.PORT||3000
-app.listen(3000)
-
-const token = process.env.KEY_BOT;
+const token = "6184315031:AAHn42PVSCdDchg1dF8IZi8yhn1HR6is4qQ";
 
 const bot = new telegramAPI(token,{polling: true});
 
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
 
-
-
-
-
-
-
-
-
-
-
-
-
 const myText = "" +
-    "Who are yu" ;
+"Who are yu" ;
 
-async function abc() {
+(async () => {
     try {
         // Catching a message from the chat
         bot.on('message', async msg => {
@@ -179,27 +157,4 @@ async function abc() {
             console.log(error.message);
         }
     }
-} ;
-// abc()
-
-
-
-
-// Start the server
-if (process.env.NODE_ENV === "production") {
-    // Use Webhooks for the production server
-    const app = express();
-    app.use(express.json());
-    app.use(webhookCallback(abc, "express"));
-  
-    const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => {
-      console.log(`Bot listening on port ${PORT}`);
-    });
-  } else {
-    // Use Long Polling for development
-    abc();
-  }
-
-
-
+}) ();
