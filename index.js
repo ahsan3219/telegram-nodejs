@@ -56,17 +56,18 @@ const myText = "" +
                         myMessage = anc+text;
             console.log("Mymessage ", myMessage);           
             // let result = await textGeneration(anc);
-            const completion = await openai.createCompletion({
-                model: 'text-davinci-003',
-                prompt: myMessage,
-                temperature: 0.2,
-                max_tokens: 200,
-                top_p: 1.0,
-                frequency_penalty: 0.2,
-                presence_penalty: 0.2,
-                stop: ["\n+"],
-            })
-            await bot.sendMessage(chatId, completion.data.choices[0].text);
+            // const completion = await openai.createCompletion({
+            //     model: 'text-davinci-003',
+            //     prompt: myMessage,
+            //     temperature: 0.2,
+            //     max_tokens: 200,
+            //     top_p: 1.0,
+            //     frequency_penalty: 0.2,
+            //     presence_penalty: 0.2,
+            //     stop: ["\n+"],
+            // })
+            // await bot.sendMessage(chatId, completion.data.choices[0].text);
+            await bot.sendMessage(chatId,myMessage);
             
             // console.log("result: ", result);          
                 }            
@@ -130,22 +131,22 @@ const myText = "" +
 //         }
             
             
-            else if ( myMessage = text ){
-            // Pass model settings to OpenAI
-            const completion = await openai.createCompletion({
-                model: 'text-davinci-003',
-                prompt: text,
-                temperature: 0.2,
-                max_tokens: 180,
-                top_p: 1.0,
-                frequency_penalty: 0.2,
-                presence_penalty: 0.2,
-                stop: ["\n+"],
-            })
-            // send the generated response to the chat
-            await bot.sendMessage(chatId, completion.data.choices[0].text);
-            console.log(completion.data);
-    }
+    //         else if ( myMessage = text ){
+    //         // Pass model settings to OpenAI
+    //         const completion = await openai.createCompletion({
+    //             model: 'text-davinci-003',
+    //             prompt: text,
+    //             temperature: 0.2,
+    //             max_tokens: 180,
+    //             top_p: 1.0,
+    //             frequency_penalty: 0.2,
+    //             presence_penalty: 0.2,
+    //             stop: ["\n+"],
+    //         })
+    //         // send the generated response to the chat
+    //         await bot.sendMessage(chatId, completion.data.choices[0].text);
+    //         console.log(completion.data);
+    // }
 
 })
     // If there are errors, print them to the console
