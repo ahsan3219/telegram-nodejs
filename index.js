@@ -35,44 +35,72 @@ const myText = "" +
             } 
 
 
-//             else if (text==="Give List"||text==="LIST"||text==="give list"||text==="Give list"||text==="list"|| text==="List"){
+            else if (text==="Give List"||text==="LIST"||text==="give list"||text==="Give list"||text==="list"|| text==="List"){
         
         
-//                 const api_url = 
-//                         `https://sheetdb.io/api/v1/keqbu2v4inoqz/ `;
+                const api_url = 
+                        `https://sheetdb.io/api/v1/keqbu2v4inoqz/ `;
         
-//         data=                async function getapi(url) {
-//                      let response = await fetch(url);
-//                       var datas = await response.json();
-//                       let data=JSON.stringify(datas);
+dat=        async function getapi(url) {
+                     let response = await fetch(url);
+                      var data = await response.json();
+                    //   let data=JSON.stringify(datas);
                     
-//                     return data  //   console.log("data",datas);
-//                     //   call(data)
-//                 }
-//                 await bot.sendMessage(chatId,data)
+                    return data  
+                    //   console.log("data",datas);
+                    //   call(data)
+                }
+                // await bot.sendMessage(chatId,"data")
                 
                 
-//         //             async  function call(datas){
-//         //             a=datas.map(async (eachItem)=>{
-//         //                 console.log("eachItem.Name",eachItem.Name,"/n")
-//         //                 console.log("surname",eachItem.Surname,"/n")
-//         //                 console.log("Phoe",eachItem.Phone,"/n")
-//         //                 console.log("eachItem.Name",eachItem.Name,"/n")
-//         //                 console.log("eachItem.Name",eachItem.Name)
-//         //     return eachItem= `${eachItem.Name} /n 
-//         //     ${eachItem.Surname} /n`     
+        //             async  function call(datas){
+        //             a=datas.map(async (eachItem)=>{
+        //                 console.log("eachItem.Name",eachItem.Name,"/n")
+        //                 console.log("surname",eachItem.Surname,"/n")
+        //                 console.log("Phoe",eachItem.Phone,"/n")
+        //                 console.log("eachItem.Name",eachItem.Name,"/n")
+        //                 console.log("eachItem.Name",eachItem.Name)
+        //     return eachItem= `${eachItem.Name} /n 
+        //     ${eachItem.Surname} /n`     
         
-//         //     await bot.sendMessage(chatId,"a");
+        //     await bot.sendMessage(chatId,"a");
 
 
-//         // })  
+        // })  
 
-//         //           }
-//                     getapi(api_url)
+        //           }
+        dat(api_url)
+
+        abca= await dat(api_url)
+                result= abca.map((eachItems)=>{
+            return `Name : ${eachItems.Name}  Surname: ${eachItems.Surname}  Phone : ${eachItems.Phone}
+ Email : ${eachItems.Email}
+            `        })
+                    a=await result
+                    console.log("abca",abca.length);
+                    console.log("result",a);
+                    console.log("a",typeof(a));
+                    
+                    res=a.map((each)=>{
+                        return each + "/n"
+                    })
+
+                    console.log(typeof(res),"res");
+                    const myJSON = JSON.stringify(a);
+console.log("myJson",myJSON.length);
+
+        // await bot.sendMessage(chatId,myJSON)
+      j=myJSON.slice(0,4062)
+      k=myJSON.slice(4061,myJSON.length)
+        await bot.sendMessage(chatId,j)
+        await bot.sendMessage(chatId,k)
+
+
+        // console.log("dat",dat);
 
                                   
-// // await bot.sendMessage(chatId,"a");
-//             }
+// await bot.sendMessage(chatId,"a");
+            }
     
     
             else {
@@ -99,13 +127,14 @@ const myText = "" +
             const completion = await openai.createCompletion({
                 model: 'text-davinci-003',
                 prompt: myMessage,
-                temperature: 1,
-                max_tokens: 1400,
+                temperature: 0.8,
+                max_tokens: 400,
                 top_p: 1.0,
                 frequency_penalty: 0.2,
                 presence_penalty: 0.2,
                 stop: ["\n+"],
             })
+            // await bot.sendMessage(chatId,"Hey")
             await bot.sendMessage(chatId, completion.data.choices[0].text);
             // await bot.sendMessage(chatId,data);
             
