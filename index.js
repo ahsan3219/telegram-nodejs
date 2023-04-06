@@ -2,14 +2,17 @@ const dotenv = require('dotenv').config();
 const fetch = require("node-fetch");
 const telegramAPI = require('node-telegram-bot-api');
 
-const token = process.env.KEY_BOT;
+// const token = process.env.KEY_BOT;
+const token = "6184315031:AAHn42PVSCdDchg1dF8IZi8yhn1HR6is4qQ";
 
 const bot = new telegramAPI(token,{polling: true});
 
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+    // apiKey: process.env.OPENAI_API_KEY,
+    apiKey: "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",
+
 });
 
 const openai = new OpenAIApi(configuration);
@@ -32,21 +35,46 @@ const myText = "" +
             } 
 
 
-            else if (text==="Give List"||text==="LIST"||text==="give list"||text==="Give list"||text==="list"|| text==="List"){
-                const api_url = 
-                        `https://sheetdb.io/api/v1/keqbu2v4inoqz/ `;
+//             else if (text==="Give List"||text==="LIST"||text==="give list"||text==="Give list"||text==="list"|| text==="List"){
+        
+        
+//                 const api_url = 
+//                         `https://sheetdb.io/api/v1/keqbu2v4inoqz/ `;
+        
+//         data=                async function getapi(url) {
+//                      let response = await fetch(url);
+//                       var datas = await response.json();
+//                       let data=JSON.stringify(datas);
                     
-                  async function getapi(url) {
-                      
-                     let response = await fetch(url);
-                      
-                      var data = await response.json();
-         console.log("data",data);
-                      await bot.sendMessage(chatId,data);
-                    }
-          
-            }
+//                     return data  //   console.log("data",datas);
+//                     //   call(data)
+//                 }
+//                 await bot.sendMessage(chatId,data)
+                
+                
+//         //             async  function call(datas){
+//         //             a=datas.map(async (eachItem)=>{
+//         //                 console.log("eachItem.Name",eachItem.Name,"/n")
+//         //                 console.log("surname",eachItem.Surname,"/n")
+//         //                 console.log("Phoe",eachItem.Phone,"/n")
+//         //                 console.log("eachItem.Name",eachItem.Name,"/n")
+//         //                 console.log("eachItem.Name",eachItem.Name)
+//         //     return eachItem= `${eachItem.Name} /n 
+//         //     ${eachItem.Surname} /n`     
+        
+//         //     await bot.sendMessage(chatId,"a");
 
+
+//         // })  
+
+//         //           }
+//                     getapi(api_url)
+
+                                  
+// // await bot.sendMessage(chatId,"a");
+//             }
+    
+    
             else {
             //   console.log("text",typeof(text));
 
@@ -64,22 +92,22 @@ const myText = "" +
           
                     async function texts(data){
                         let datas=JSON.stringify(data);
-                        let anc=`The is the list of all members in json form ${datas} Kindly read it carefully and  answer the question accordingly answer should be in text form should not contain json format.Remember last question and if need answer next question accordingly.`
+                        let anc=`The is the list of all members in json form ${datas} Kindly read it carefully and  answer the question accordingly answer should be in text form should not contain json format.`
                         myMessage = anc+text;
             console.log("Mymessage ", myMessage);           
             // let result = await textGeneration(anc);
             const completion = await openai.createCompletion({
                 model: 'text-davinci-003',
                 prompt: myMessage,
-                temperature: 0.2,
-                max_tokens: 200,
+                temperature: 1,
+                max_tokens: 1400,
                 top_p: 1.0,
                 frequency_penalty: 0.2,
                 presence_penalty: 0.2,
                 stop: ["\n+"],
             })
             await bot.sendMessage(chatId, completion.data.choices[0].text);
-            await bot.sendMessage(chatId,data);
+            // await bot.sendMessage(chatId,data);
             
             // console.log("result: ", result);          
                 }            
