@@ -2,16 +2,16 @@ const dotenv = require('dotenv').config();
 const fetch = require("node-fetch");
 const telegramAPI = require('node-telegram-bot-api');
 
-// const token = process.env.KEY_BOT;
-const token = "6184315031:AAHn42PVSCdDchg1dF8IZi8yhn1HR6is4qQ";
+const token = process.env.KEY_BOT;
+// const token = "6184315031:AAHn42PVSCdDchg1dF8IZi8yhn1HR6is4qQ";
 
 const bot = new telegramAPI(token,{polling: true});
 
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-    // apiKey: process.env.OPENAI_API_KEY,
-    apiKey: "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",
+    apiKey: process.env.OPENAI_API_KEY,
+    // apiKey: "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",
 
 });
 
