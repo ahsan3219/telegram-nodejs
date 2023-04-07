@@ -1,7 +1,8 @@
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv')
 const fetch = require("node-fetch");
 const telegramAPI = require('node-telegram-bot-api');
-
+dotenv.config()
+console.log("token ",process.env.KEY_BOT);
 const token = process.env.KEY_BOT;
 // const token = "6184315031:AAHn42PVSCdDchg1dF8IZi8yhn1HR6is4qQ";
 
@@ -11,7 +12,7 @@ const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
-    // apiKey: "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",
+    // apiKey: "",
 
 });
 
@@ -29,7 +30,7 @@ const myText = "" +
             const chatId = msg.chat.id;
             console.log(msg.text);
             // // Process the "/start" command and send brief information to the chat
-            if (text === 'Hi') {
+            if (text === 'Hi'||text === 'hi'||text === 'Hello'||text === 'hello'||text === 'Halo'||text === 'hey'||text === 'halo') {
                 myMessage = myText;
                 await bot.sendMessage(chatId, `Hi Alfredo Mensi. I am your GoogleSheet Assistant.How can I help You.Start every message with keyword "Start".For example:Assistant tell me who is adam?`)
             } 
