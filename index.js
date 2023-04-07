@@ -2,7 +2,7 @@ const dotenv = require('dotenv').config();
 const fetch = require("node-fetch");
 const telegramAPI = require('node-telegram-bot-api');
 
-const token = process.env.KEY_BOT;
+// const token = process.env.KEY_BOT;
 // const token = "6184315031:AAHn42PVSCdDchg1dF8IZi8yhn1HR6is4qQ";
 
 const bot = new telegramAPI(token,{polling: true});
@@ -10,8 +10,8 @@ const bot = new telegramAPI(token,{polling: true});
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
-    // apiKey: "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",
+    // apiKey: process.env.OPENAI_API_KEY,
+    // apiKey: "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",
 
 });
 
@@ -39,7 +39,7 @@ const myText = "" +
         
         
                 const api_url = 
-                        `https://sheetdb.io/api/v1/keqbu2v4inoqz/ `;
+                        `https://sheetdb.io/api/v1/mox7nm586xt59 `;
         
 dat=        async function getapi(url) {
                      let response = await fetch(url);
@@ -72,6 +72,7 @@ dat=        async function getapi(url) {
         dat(api_url)
 
         abca= await dat(api_url)
+        console.log("abca",abca);
                 result= abca.map((eachItems)=>{
             return `Name : ${eachItems.Name}  Surname: ${eachItems.Surname}  Phone : ${eachItems.Phone}
  Email : ${eachItems.Email}
@@ -107,7 +108,7 @@ console.log("myJson",myJSON.length);
             //   console.log("text",typeof(text));
 
                 const api_url = 
-                        `https://sheetdb.io/api/v1/keqbu2v4inoqz/ `;
+                        `https://sheetdb.io/api/v1/mox7nm586xt59 `;
                     
                   async function getapi(url) {
                       
